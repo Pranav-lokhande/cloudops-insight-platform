@@ -1,5 +1,6 @@
 services:
   frontend:
+    image: cloudops-insight-platform-frontend:local
     build: ./frontend
     ports: ["80:80"]
     depends_on:
@@ -8,6 +9,7 @@ services:
     restart: unless-stopped
     networks: [app-net]
   backend:
+    image: cloudops-insight-platform-backend:local
     build: ./backend
     environment:
       DB_HOST: ${DB_HOST:-db}
