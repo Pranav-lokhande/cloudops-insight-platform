@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Informative cloud operations and DevOps dashboard">
+<title>CloudOps Insight Platform</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#">☁ CloudOps <span>INSIGHT PLATFORM</span></a><span class="pill">● LEARNING WORKSPACE</span></header>
+<main>
+<section class="hero"><div><p class="eyebrow">CLOUD OPERATIONS WORKSPACE</p><h1>Understand your cloud.<br><span>Improve every deployment.</span></h1><p class="intro">A practical learning hub for infrastructure, automation, delivery pipelines, and observability — built as a real three-tier application.</p><a class="button" href="#lifecycle">Explore the lifecycle →</a></div><div class="hero-art"><div class="cloud">☁</div><div class="orbit">GIT · BUILD · DEPLOY · OBSERVE</div></div></section>
+<section><div class="section-head"><div><p class="eyebrow">AT A GLANCE</p><h2>Platform overview</h2></div><span class="muted">Live API data</span></div>
+<div class="stats"><article><label>Registered services</label><strong id="service-count">—</strong><small>Saved in MySQL</small></article><article><label>API status</label><strong id="api-status">Checking…</strong><small id="api-detail">Contacting backend</small></article><article><label>Application tiers</label><strong>03</strong><small>Frontend · API · Database</small></article><article><label>Learning modules</label><strong>06</strong><small>Code to monitoring</small></article></div></section>
+<section id="lifecycle"><div class="section-head"><div><p class="eyebrow">DELIVERY WORKFLOW</p><h2>DevOps lifecycle</h2></div></div><div class="cards">
+<article><b class="icon purple">⌘</b><h3>Plan & code</h3><p>Version control, code review, and collaboration.</p><span>GitHub · Git</span></article>
+<article><b class="icon orange">◆</b><h3>Build & test</h3><p>Automate checks, image builds, and publishing.</p><span>GitLab CI/CD</span></article>
+<article><b class="icon blue">▣</b><h3>Package</h3><p>Ship consistent services using container images.</p><span>Docker</span></article>
+<article><b class="icon cyan">⎈</b><h3>Orchestrate</h3><p>Manage workloads, services, and rollout health.</p><span>Kubernetes</span></article>
+<article><b class="icon purple">↻</b><h3>Deploy with GitOps</h3><p>Reconcile cluster state from version-controlled manifests.</p><span>Argo CD</span></article>
+<article><b class="icon green">⌁</b><h3>Observe</h3><p>Collect metrics and build operational dashboards.</p><span>Prometheus · Grafana</span></article></div></section>
+<section id="registry"><div class="section-head"><div><p class="eyebrow">DATABASE-BACKED FEATURE</p><h2>Service registry</h2><p class="muted">Add a service or infrastructure component. The API saves it to MySQL.</p></div></div>
+<div class="registry"><form id="service-form"><h3>Register a service</h3><label for="name">Service name</label><input id="name" name="name" maxlength="100" placeholder="e.g. Monitoring API" required>
+<label for="category">Category</label><select id="category" name="category"><option>Application</option><option>Database</option><option>Infrastructure</option><option>Monitoring</option><option>CI/CD</option><option>Security</option></select>
+<label for="environment">Environment</label><select id="environment" name="environment"><option>Development</option><option>Testing</option><option>Staging</option><option>Production</option></select>
+<label for="description">Description</label><textarea id="description" name="description" maxlength="500" rows="3" placeholder="What does this component do?"></textarea><button class="button" type="submit">Save service →</button><p id="form-message" role="status"></p></form>
+<div class="records"><div class="records-head"><h3>Registered components</h3><button id="refresh" class="link-button" type="button">↻ Refresh</button></div><div id="service-list" class="service-list">Loading records…</div></div></div></section>
+<section id="learning"><div class="section-head"><div><p class="eyebrow">BUILD YOUR SKILLS</p><h2>Learning paths</h2></div></div><div class="learning">
+<article><b>01</b><h3>Container fundamentals</h3><p>Images, containers, networks, volumes, Compose.</p></article><article><b>02</b><h3>Infrastructure as code</h3><p>Terraform variables, state, and reusable modules.</p></article><article><b>03</b><h3>Cluster operations</h3><p>Pods, Deployments, Services, ConfigMaps, Secrets.</p></article><article><b>04</b><h3>Reliable operations</h3><p>Health checks, metrics, alerting, dashboards.</p></article></div></section>
+<footer><b>CloudOps Insight Platform</b><span>Built for learning cloud operations · <span id="footer-api">API connecting…</span></span></footer>
+</main><script src="/app.js" defer></script></body></html>

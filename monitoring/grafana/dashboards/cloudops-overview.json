@@ -1,0 +1,19 @@
+{
+  "uid": "cloudops-overview",
+  "title": "CloudOps Insight Overview",
+  "tags": ["cloudops"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Registered Services",
+      "gridPos": {"h": 5, "w": 12, "x": 0, "y": 0},
+      "datasource": {"type": "prometheus", "uid": "Prometheus"},
+      "targets": [{"expr": "cloudops_services_total", "refId": "A"}]
+    }
+  ]
+}

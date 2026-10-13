@@ -1,0 +1,51 @@
+services:
+  frontend:
+    build: ./frontend
+    ports: ["80:80"]
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    networks: [app-net]
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: ${DB_HOST:-db}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_NAME: ${DB_NAME:-cloudops}
+      DB_USER: ${DB_USER:-cloudops_app}
+      DB_PASSWORD: ${DB_PASSWORD:-change_this_app_password}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/api/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    networks: [app-net]
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-cloudops}
+      MYSQL_USER: ${MYSQL_USER:-cloudops_app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_this_app_password}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_this_root_password}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 25s
+    restart: unless-stopped
+    networks: [app-net]
+volumes:
+  mysql-data:
+networks:
+  app-net:
+    driver: bridge
