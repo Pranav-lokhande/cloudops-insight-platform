@@ -1,0 +1,28 @@
+
+name: CloudOps Insight Platform CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose
+        run: docker compose -f compose.yaml config -q
+
+      - name: Build backend image
+        run: docker build -t cloudops-backend:test ./backend
+
+      - name: Build frontend image
+        run: docker build -t cloudops-frontend:test ./frontend
