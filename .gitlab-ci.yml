@@ -1,3 +1,4 @@
+# CloudOps Insight Platform - GitLab CI/CD
 stages: [validate, build]
 variables:
   BACKEND_IMAGE: "$CI_REGISTRY_IMAGE/backend"
